@@ -1,0 +1,35 @@
+@media print {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .cover__title {
+    text-align: center;
+    font-size: 5em;
+  }
+
+.cover__text {
+  text-shadow: none;
+  color: black;
+}
+
+
+  #main_signup {
+    display: none;
+  }
+
+
+
+  .about__content {
+    width: 100% !important;
+  }
+
+  #footer, footer {
+    position: absolute;
+    bottom: 0;
+  }
+
+
+
+}

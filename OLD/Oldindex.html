@@ -1,0 +1,279 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- <link rel="manifest" href="site.webmanifest"> -->
+  <!-- <link rel="apple-touch-icon" href="icon.png"> -->
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <!-- <link rel="stylesheet" href="css/main.css"> -->
+  <link rel="stylesheet" href="css/bootstrap-grid.css">
+  <link rel="stylesheet" href="scss/main.css">
+
+</head>
+
+<body>
+
+  <div class="container-fluid">
+
+    <!-- ************************************ h e a d e r  ************************************ -->
+
+    <header  class="header row">
+
+      <!-- navigation for med and up  -->
+      <nav class="nav_large nav col  flex-row justify-content-between align-items-center d-xs-none d-sm-none d-md-none d-lg-flex d-xl-flex">
+
+        <a href="/" class="header__title">
+          <h1 class="header__title--text">{{ title }}</h1>
+        </a>
+
+        <ul class="nav__links d-flex justify-content-end">
+          <li v-for="nav_link in nav_links" class="nav__link nav__link--hover"><nuxt-link to="nav_link.link">{{ nav_link.name }}</nuxt-link></li>
+          <li class="nav__link nav__link--disabled"><a href="/" disabled>Journal</a></li>
+        </ul>
+      </nav>
+
+      <!-- <nuxt-link to="/sideprojects/1">LINK TO side_projects</nuxt-link> -->
+
+      <!-- navigation menu for MOBILE-->
+      <div id="nav" class=" col nav_mobile d-xs-flex d-sm-flex d-md-flex d-lg-none d-xl-none">
+        <i v-on:click="isHidden = !isHidden" class="fa fa-bars"></i>
+        <transition name="slide-fade">
+          <!--  inside nav menu -->
+          <aside v-if="isHidden"  class="nav_mobile__area">
+            <div class="d-flex flex-column justify-content-between align-items-start">
+
+              <!-- nav exit button -->
+              <div class="nav_mobile__area__exit_button">
+                <i v-on:click="isHidden = !isHidden" class="fas fa-times fa-2x"></i>
+              </div>
+
+              <!-- nav links -->
+              <div id="navLinks" class="nav_mobile__area__links d-flex align-items-start justify-content-between ">
+                <ul class="nav_mobile__links d-flex flex-column align-items-center justify-content-center">
+                  <li  v-for="nav_link in nav_links" class="nav_mobile__link nav_mobile__link--hover"><a :href="nav_link.link">{{ nav_link.name }}</a></li>
+                  <li class="nav_mobile__link nav_mobile__link--disabled"><a href="#journal" disabled>Journal</a></li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+        </transition>
+      </div>
+
+    </header>
+
+
+
+    <!-- ************************************ m a i n  ************************************ -->
+
+    <main id="main" class="main">
+
+      <!-- cover image -->
+      <section class="row cover">
+        <div class="cover__overlay col d-flex flex-column align-items-center justify-content-center">
+          <h2 class="cover__title">The Noise Who Runs</h2>
+          <p id="circletype" class="cover__text">The official website for the music and lyrics of Ian Pickering</p>
+          <div class="cover__title--bckg">
+            <div class="cover__title--bckg-text">TNWR</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- about and members -->
+      <section id="about" class="row about">
+
+        <article class="about__content col d-flex flex-column flex-xl-row-reverse align-items-center justify-content-center align-items-xl-start">
+
+          <div class="d-flex flex-column align-items-center justify-content-center col-xl-6 align-items-xl-center justify-content-xl-start ">
+            <h2 class="about__title about__title--text">and here we are</h2>
+            <p v-for="about_item in about_items" class="about__description about__description--text"> {{ about_item.item }} </p>
+          </div>
+
+          <!-- image gallery visible from lg and up -->
+
+          <div class=" col-xl-6 align-items-start justify-content-start d-none d-lg-block d-xl-block">
+            <div id="macy-gallery" class="">
+              <!-- <img src="~static/img/pictures/newroxy01.jpg" alt=""> -->
+              <div v-for="about_gallery_image in about_gallery_images">
+                <img :src="about_gallery_image.img" alt="Ian Pickering The Noise Who Runs ">
+              </div>
+            </div>
+          </div>
+
+        </article>
+
+        <!-- image carrousel visible from md and down -->
+
+        <section class="row caroussel d-lg-none d-xl-none">
+          <div class="col">
+            <div class="siema caroussel-siema">
+              <div v-for="about_gallery_image in about_gallery_images">
+                <img :src="about_gallery_image.img" alt="Siema image" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </section>
+
+      <!-- ************** promo EP ******************************************************  -->
+
+      <section id="promo" class="row promo_ep">
+        <div class="col">
+          <div class="promo_ep__image">
+            <img :src="img" class="" alt="Cover EP The first of two sides of a double-headed coin by The Noise who Runs">
+          </div>
+        </div>
+        <div class="col">
+          <div v-for="promo_ep in promo_eps" class="promo_ep__description d-flex flex-column justify-content-center align-items-start">
+            <h3 class="promo_ep__description__title"> {{ title }} </h3>
+            <p class="promo_ep__description__text"> {{ text }} </p>
+
+            <a class="promo_ep__description__button" :href="url" target="_blank"> {{ button }} </a>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- PROMO EP for Mobile -->
+
+      <section id="promo_mo" class="row promo_mobile d-xs-flex d-sm-flex d-md-flex d-lg-none d-xl-none">
+        <div class="col">
+          <div class="promo_mobile__image">
+            <img :src="img" class="" alt="Cover EP The first of two sides of a double-headed coin by The Noise who Runs">
+          </div>
+          <div class="promo_mobile__description d-flex flex-column justify-content-center align-items-center">
+            <h3 class="promo_mobile__description__title"> {{ title }} </h3>
+            <p class="promo_mobile__description__text"> {{ text }} </p>
+
+            <a class="promo_mobile__description__button" :href="url" target="_blank"> {{ button }} </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ************ Side Projects Area ************** -->
+
+
+      <section id="side-projects" class="row side_projects d-flex flex-column">
+
+        <div  class="col_12 ">
+          <div class="side_projects__title">
+            <h2 class="side_projects__title--text">Side Projects</h2>
+          </div>
+        </div>
+
+        <div class="col-12">
+
+          <div id="macy-container" class=" side_projects__gallery">
+            <a href="/">
+              <img src=".\img\sideprojects\sideproject_1.png" alt="item.alt">
+              <div class="side_projects__gallery__overlay">
+                <p> Album title, 1999 </p>
+              </div>
+            </a>
+            <a href="/">
+              <img src=".\img\sideprojects\sideproject_1.png" alt="item.alt">
+              <div class="side_projects__gallery__overlay">
+                <p> Album title, 1999 </p>
+              </div>
+            </a>
+            <a href="/">
+              <img src=".\img\sideprojects\sideproject_1.png" alt="item.alt">
+              <div class="side_projects__gallery__overlay">
+                <p> Album title, 1999 </p>
+              </div>
+            </a>
+            <a href="/">
+              <img src=".\img\sideprojects\sideproject_1.png" alt="item.alt">
+              <div class="side_projects__gallery__overlay">
+                <p> Album title, 1999 </p>
+              </div>
+            </a>
+            <a href="/">
+              <img src=".\img\sideprojects\sideproject_1.png" alt="item.alt">
+              <div class="side_projects__gallery__overlay">
+                <p> Album title, 1999 </p>
+              </div>
+            </a>
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+
+
+      <!-- <section id="">
+      <div  class="col side_projects__title">
+      <h2 class="side_projects__title--text">Side Projects</h2>
+    </div>
+  </section>
+
+  <section id="" class="row side_projects d-flex justify-content-center align_items-center">
+
+  <div id="macy-container" class="col side_projects__gallery">
+  <a v-for="item in items" href="item.link">
+  <img :src="item.img" :alt="item.alt">
+  <div class="side_projects__gallery__overlay">
+  <p> {{ item.name }} </p>
+</div>
+</a>
+</div>
+
+</section>
+-->
+
+
+</main>
+
+
+<!-- ************************************ f o o t e r ************************************ -->
+<footer class="footer row d-flex align-items-center justify-content-around">
+
+  <div class="col">
+    <a class="footer__link--brand" href="/">
+      <h2 class="footer__title"> {{ title }} </h2>
+    </a>
+  </div>
+
+  <ul class="col footer__social row d-flex justify-content-end ">
+    <li v-for="contact in contacts" class="footer__link">
+      <a :href="contact.link">
+        <img :src="contact.icon" alt="" class="footer__link--icon" />
+      </a>
+    </li>
+  </ul>
+
+</footer>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+
+<!-- <script src="js/vendor/modernizr-3.8.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
+<!-- <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script> -->
+<script src="https://kit.fontawesome.com/ad28620b89.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/macy@2"></script>
+<script src="./js/siema.min.js"></script>
+<script src="./js/vue.js"></script>
+<script src="./js/main.js"></script>
+
+<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+<script>
+window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
+</script>
+<script src="https://www.google-analytics.com/analytics.js" async></script>
+</body>
+
+</html>
