@@ -29,7 +29,7 @@ var about = new Vue({
           img: 'img/pictures/newroxy06.jpg'
         },
         {
-          img: 'img/pictures/img_8.jpg'
+          img: 'img/pictures/img8.jpg'
         },
         {
           img: 'img/pictures/newroxy07.jpg'
