@@ -14,7 +14,7 @@ var about = new Vue({
           img: 'img/pictures/newroxy01.jpg'
         },
         {
-          img: 'img/pictures/img_4.jpg'
+          img: 'img/pictures/img4.jpg'
         },
         {
           img: 'img/pictures/newroxy03.jpg'
@@ -38,31 +38,31 @@ var about = new Vue({
           img: 'img/pictures/newroxy08.jpg'
         },
         {
-          img: 'img/pictures/img_1.jpg'
+          img: 'img/pictures/img1.jpg'
         },
         {
-          img: 'img/pictures/img_2.jpg'
+          img: 'img/pictures/img2.jpg'
         },
         {
-          img: 'img/pictures/img_3.jpg'
+          img: 'img/pictures/img3.jpg'
         },
         {
           img: 'img/pictures/newroxy02.jpg'
         },
         {
-          img: 'img/pictures/img_5.jpg'
+          img: 'img/pictures/img5.jpg'
         },
         {
-          img: 'img/pictures/img_6.jpg'
+          img: 'img/pictures/img6.jpg'
         },
         {
           img: 'img/pictures/newroxy05.jpg'
         },
         {
-          img: 'img/pictures/img_7.jpg'
+          img: 'img/pictures/img7.jpg'
         },
         {
-          img: 'img/pictures/img_9.jpg'
+          img: 'img/pictures/img9.jpg'
         }
       ]
     }
